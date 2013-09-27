@@ -13,3 +13,5 @@ Windows and Linux:
 
 * `Ctrl-Shift-m` : Run mix
 * `Ctrl-Alt-Shift-m` : Run mix with argument
+
+![](exmix.png)
