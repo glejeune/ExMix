@@ -1,0 +1,5 @@
+{
+	// Override these in your own
+	// `Packages/User/Ex Mix.sublime-settings` file.
+	"PATH": ["/usr/local/bin"]
+}

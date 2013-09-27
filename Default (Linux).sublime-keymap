@@ -1,0 +1,4 @@
+[
+	{"keys": ["ctrl+shift+m"], "command": "mix_prompt", "args": {"with_args": false}},
+	{"keys": ["ctrl+shift+alt+m"], "command": "mix_prompt", "args": {"with_args": true}}
+]
