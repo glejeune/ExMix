@@ -51,12 +51,6 @@ class MixPromptCommand(sublime_plugin.WindowCommand):
         self.mix_commands = []
         self.mix_commands_comment = ["something was wrong!"]
 
-    def is_enabled(self):
-        self.mix_directory() is not None
-
-    def is_visible(self):
-        self.mix_directory() is not None
-
     def run(self, with_args):
         self.with_args = with_args
         self.mix_commands = []
@@ -111,13 +105,21 @@ class MixPromptCommand(sublime_plugin.WindowCommand):
 
     def mix_directory(self):
         file_name = self.window.active_view().file_name()
-        path = file_name.split("/")
-        path.pop()
-        path = "/".join(path)
-        return self.get_mix_directory(path)
+        if file_name is None:
+            file_name = self.window.folders()
+            print(str(file_name))
+            if len(file_name) != 1:
+                return None
+            else:
+                return self.get_mix_directory(file_name[0])
+        else:
+            path = file_name.split("/")
+            path.pop()
+            path = "/".join(path)
+            return self.get_mix_directory(path)
 
     def get_mix_directory(self, path):
-        print("looking for min in " + path)
+        print("looking for mix in " + path)
         if(len(glob.glob(os.path.join(path, "mix.*"))) == 0):
             if(path != "/"):
                 return self.get_mix_directory(
